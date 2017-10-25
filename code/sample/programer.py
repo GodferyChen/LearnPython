@@ -5,6 +5,7 @@
 
 __author__ = 'Chen'
 
+
 class Programer(object):
     hobby = 'Play computer'
 
@@ -31,7 +32,7 @@ class Programer(object):
     def __getattribute__(self, item):
         # return getattr(self,item)
         # return self.__dict__[item]
-        return super(Programer,self).__getattribute__(item)
+        return super(Programer, self).__getattribute__(item)
 
     def __setattr__(self, key, value):
         # setattr(self,key,value)

@@ -5,15 +5,18 @@
 
 __author__ = 'Chen'
 
+
 class OldSytle:
-    def __init__(self,name ,description):
+    def __init__(self, name, description):
         self.name = name
         self.desciption = description
 
+
 class NewSytle(object):
-    def __init__(self,name ,description):
+    def __init__(self, name, description):
         self.name = name
         self.description = description
+
 
 old = OldSytle('old', "old style class")
 print(old)
