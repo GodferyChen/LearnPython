@@ -1,3 +1,0 @@
-import MySQldb
-
-print(MySQldb)
