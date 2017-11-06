@@ -40,6 +40,7 @@ class HtmlParser(object):
 
         # <div class="lemma-summary" label-module="lemmaSummary">
         summary_node = soup.find('div', class_='lemma-summary')
-        res_data['summary'] = summary_node.get_text()
+        summary = summary_node.get_text()
+        res_data['summary'] = summary[1:]
 
         return res_data
