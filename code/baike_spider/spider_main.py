@@ -27,7 +27,7 @@ class SpiderMain(object):
                     break
 
                 count = count + 1
-            except :
+            except:
                 # Exception as e
                 print('craw failed')
                 # log('Reason', e)
