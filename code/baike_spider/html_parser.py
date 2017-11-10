@@ -2,6 +2,8 @@
 import re
 from urllib.parse import urljoin
 from urllib.parse import unquote
+
+import math
 from bs4 import BeautifulSoup
 
 
@@ -40,7 +42,6 @@ class HtmlParser(object):
 
         # <div class="lemma-summary" label-module="lemmaSummary">
         summary_node = soup.find('div', class_='lemma-summary')
-        summary = summary_node.get_text()
-        res_data['summary'] = summary[1:]
+        res_data['summary'] = summary_node.get_text().strip()
 
         return res_data

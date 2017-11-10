@@ -1,4 +1,5 @@
 import math
+from functools import reduce
 
 
 def add(x, y, f):
@@ -15,3 +16,14 @@ def format_name(s):
 
 
 print(list(map(format_name, ['adam', 'LISA', 'barT'])))
+
+def prod(x, y):
+    return x*y
+
+print(reduce(prod, [2, 4, 5, 7, 12]))
+
+def is_sqr(x):
+    r = int(math.sqrt(x))
+    return r*r==x
+
+print(list(filter(is_sqr, range(1, 101))))
