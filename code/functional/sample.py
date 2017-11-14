@@ -76,3 +76,51 @@ def count():
 
 f1, f2, f3 = count()
 print(f1(), f2(), f3())
+
+
+# Python 中的匿名函数
+def is_not_empty(s):
+    return s and len(s.strip()) > 0
+
+print(list(filter(is_not_empty, ['test', None, '', 'str', '  ', 'END'])))
+print(list(filter(lambda s: s and len(s.strip()) > 0,['test', None, '', 'str', '  ', 'END'])))
+
+
+# python中编写无参数decorator
+import time
+
+def performance(f):
+    def fn(*args, **kw):
+        t1 = time.time()
+        r = f(*args, **kw)
+        t2 = time.time()
+        print('call %s() in %fs' %(f.__name__,(t2 - t1)))
+        return r
+    return fn
+
+@performance
+def factorial(n):
+    return reduce(lambda x,y: x*y, range(1, n+1))
+
+print(factorial(10))
+
+# python中编写带参数decorator
+import time
+
+def performance(unit):
+    def perf_decorator(f):
+        def wrapper(*args, **kw):
+            t1 = time.time()
+            r = f(*args, **kw)
+            t2 = time.time()
+            t = (t2 - t1) * 1000 if unit=='ms' else (t2 - t1)
+            print('call %s() in %f %s' % (f.__name__, t, unit))
+            return r
+        return wrapper
+    return perf_decorator
+
+@performance('ms')
+def factorial(n):
+    return reduce(lambda x,y: x*y, range(1, n+1))
+
+print(factorial(10))
