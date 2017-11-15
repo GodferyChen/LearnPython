@@ -124,3 +124,54 @@ def factorial(n):
     return reduce(lambda x,y: x*y, range(1, n+1))
 
 print(factorial(10))
+
+# python中完善decorator
+import time, functools
+
+def performance(unit):
+    def perf_decorator(f):
+        @functools.wraps(f)
+        def wrapper(*args, **kw):
+            t1 = time.time()
+            r = f(*args, **kw)
+            t2 = time.time()
+            t = (t2 - t1) * 1000 if unit=='ms' else (t2 - t1)
+            print('call %s() in %f %s' % (f.__name__, t, unit))
+            return r
+        return wrapper
+    return perf_decorator
+
+@performance('ms')
+def factorial(n):
+    return reduce(lambda x,y: x*y, range(1, n+1))
+
+print(factorial.__name__)
+
+
+# python中的偏函数
+import functools
+
+sorted_ignore_case = functools.partial(sorted, key=str.lower)
+
+print(sorted_ignore_case(['bob', 'about', 'Zoo', 'Credit']))
+
+
+# 导包
+from os.path import isdir, isfile
+
+print(isdir(r'/data/webroot/resource/python'))
+print(isfile(r'/data/webroot/resource/python/test.txt'))
+
+# python中动态导入模块
+try:
+    import json as json
+except ImportError:
+    import simgplejson as json
+
+print(json.dumps({'python': 2.7}))
+
+# python之使用__future__
+from __future__ import unicode_literals
+
+s = 'am I an unicode?'
+# print(isinstance(s, unicode))
