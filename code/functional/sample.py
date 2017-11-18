@@ -57,10 +57,15 @@ def calc_prod(lst):
     def lazy_prod():
         def f(x, y):
             return x * y
+
         return reduce(f, lst, 1)
+
     return lazy_prod
+
+
 f = calc_prod([1, 2, 3, 4])
 print(f())
+
 
 # python中闭包
 def count():
@@ -68,11 +73,14 @@ def count():
     for i in range(1, 4):
         def f(j):
             def g():
-                return j*j
+                return j * j
+
             return g
+
         r = f(i)
         fs.append(r)
     return fs
+
 
 f1, f2, f3 = count()
 print(f1(), f2(), f3())
@@ -82,30 +90,35 @@ print(f1(), f2(), f3())
 def is_not_empty(s):
     return s and len(s.strip()) > 0
 
-print(list(filter(is_not_empty, ['test', None, '', 'str', '  ', 'END'])))
-print(list(filter(lambda s: s and len(s.strip()) > 0,['test', None, '', 'str', '  ', 'END'])))
 
+print(list(filter(is_not_empty, ['test', None, '', 'str', '  ', 'END'])))
+print(list(filter(lambda s: s and len(s.strip()) > 0, ['test', None, '', 'str', '  ', 'END'])))
 
 # python中编写无参数decorator
 import time
+
 
 def performance(f):
     def fn(*args, **kw):
         t1 = time.time()
         r = f(*args, **kw)
         t2 = time.time()
-        print('call %s() in %fs' %(f.__name__,(t2 - t1)))
+        print('call %s() in %fs' % (f.__name__, (t2 - t1)))
         return r
+
     return fn
+
 
 @performance
 def factorial(n):
-    return reduce(lambda x,y: x*y, range(1, n+1))
+    return reduce(lambda x, y: x * y, range(1, n + 1))
+
 
 print(factorial(10))
 
 # python中编写带参数decorator
 import time
+
 
 def performance(unit):
     def perf_decorator(f):
@@ -113,20 +126,25 @@ def performance(unit):
             t1 = time.time()
             r = f(*args, **kw)
             t2 = time.time()
-            t = (t2 - t1) * 1000 if unit=='ms' else (t2 - t1)
+            t = (t2 - t1) * 1000 if unit == 'ms' else (t2 - t1)
             print('call %s() in %f %s' % (f.__name__, t, unit))
             return r
+
         return wrapper
+
     return perf_decorator
+
 
 @performance('ms')
 def factorial(n):
-    return reduce(lambda x,y: x*y, range(1, n+1))
+    return reduce(lambda x, y: x * y, range(1, n + 1))
+
 
 print(factorial(10))
 
 # python中完善decorator
 import time, functools
+
 
 def performance(unit):
     def perf_decorator(f):
@@ -135,18 +153,21 @@ def performance(unit):
             t1 = time.time()
             r = f(*args, **kw)
             t2 = time.time()
-            t = (t2 - t1) * 1000 if unit=='ms' else (t2 - t1)
+            t = (t2 - t1) * 1000 if unit == 'ms' else (t2 - t1)
             print('call %s() in %f %s' % (f.__name__, t, unit))
             return r
+
         return wrapper
+
     return perf_decorator
+
 
 @performance('ms')
 def factorial(n):
-    return reduce(lambda x,y: x*y, range(1, n+1))
+    return reduce(lambda x, y: x * y, range(1, n + 1))
+
 
 print(factorial.__name__)
-
 
 # python中的偏函数
 import functools
@@ -154,7 +175,6 @@ import functools
 sorted_ignore_case = functools.partial(sorted, key=str.lower)
 
 print(sorted_ignore_case(['bob', 'about', 'Zoo', 'Credit']))
-
 
 # 导包
 from os.path import isdir, isfile
