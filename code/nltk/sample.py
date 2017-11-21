@@ -19,8 +19,8 @@ for token in tokens:
         clean_tokens.append(token)
 # 统计词频
 freq = nltk.FreqDist(clean_tokens)
-# for key,val in freq.items():
-#     print(str(key)+':'+str(val))
+for key, val in freq.items():
+    print(str(key) + ':' + str(val))
 
 # 做出频率分布图
 freq.plot(20, cumulative=False)
