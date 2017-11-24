@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 from urllib import request
 
 response = request.urlopen('https://baike.baidu.com/item/Python/407313')

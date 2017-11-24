@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 from bson import ObjectId
 from pymongo import MongoClient
 
