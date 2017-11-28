@@ -65,7 +65,7 @@ def square_of_sum(L):
 print(square_of_sum([1, 2, 3, 4, 5]))
 print(square_of_sum([-5, 0, 5, 15, 25]))
 
-s = set(['Adam', 'Lisa', 'Paul'])
+s = {'Adam', 'Lisa', 'Paul'}
 L = ['Adam', 'Lisa', 'Bart', 'Paul']
 for name in L:
     if name in s:

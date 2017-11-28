@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 
 import math
 from functools import reduce
@@ -194,7 +195,6 @@ except ImportError:
 print(json.dumps({'python': 2.7}))
 
 # python之使用__future__
-from __future__ import unicode_literals
 
 s = 'am I an unicode?'
 # print(isinstance(s, unicode))
