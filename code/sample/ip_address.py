@@ -7,3 +7,6 @@
 
 
 T = '25525511135'
+class Solution:
+    def ipAddress(self, str):
+        return ''
