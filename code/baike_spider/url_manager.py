@@ -1,7 +1,6 @@
 # coding:utf8
 
 class UrlManager(object):
-
     def __init__(self):
         self.new_urls = list()
         self.old_urls = list()
